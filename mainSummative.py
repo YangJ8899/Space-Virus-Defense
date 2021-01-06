@@ -62,29 +62,29 @@ life = 4            #Life count of the player
 healthValue = [50,50,50]        #Health bar for the computers
 virusHealth = [30,20,10]        #Health bar for viruses
 
-player = image.load('PlayerShip.png').convert_alpha()
+player = image.load('assets/PlayerShip.png').convert_alpha()
 player = transform.scale(player,(75,100))      #Loading in all the images
-ship2 = transform.scale(image.load('ship2.png').convert_alpha(),(75,100))
-keys = image.load("keys.png")
-background = image.load('background.jpg').convert()
-bonusItem = image.load('bonusItem.png').convert_alpha()
+ship2 = transform.scale(image.load('assets/ship2.png').convert_alpha(),(75,100))
+keys = image.load("assets/keys.png")
+background = image.load('assets/background.jpg').convert()
+bonusItem = image.load('assets/bonusItem.png').convert_alpha()
 bonusItem = transform.scale(bonusItem,(50,50))
-virus = transform.scale(image.load('virus1.png').convert_alpha(),(75,75))
-virus1 = transform.scale(image.load('virus2.png').convert_alpha(),(75,75))
-virus2 = transform.scale(image.load('virus3.png').convert_alpha(),(75,75))
-heart = transform.scale(image.load('heart.png').convert_alpha(),(50,50))
-heart1 = transform.scale(image.load('heart.png').convert_alpha(),(50,50))
-heart2 = transform.scale(image.load('heart.png').convert_alpha(),(50,50))
-menuBackground = image.load('menuBackground.jpg').convert()
-gameTitle = transform.scale(image.load('Title.png').convert_alpha(),(900,50))
-scoreKeep = transform.scale(image.load('score.png').convert_alpha(),(100,25))
-computer = transform.scale(image.load('Computer.png').convert_alpha(),(250,150))   
-gameOverPic = image.load('gameOver.jpg').convert()
-highscore = transform.scale(image.load('highScore.png').convert_alpha(),(150,25))
-gameOverTXT = transform.scale(image.load('gameOverTXT.png').convert_alpha(),(500,100))
-infoBG = image.load('infoBackGround.jpg').convert()
-power = transform.scale(image.load('power.jpg').convert_alpha(),(50,50))
-back = transform.scale(image.load('back.png').convert_alpha(),(50,50))
+virus = transform.scale(image.load('assets/virus1.png').convert_alpha(),(75,75))
+virus1 = transform.scale(image.load('assets/virus2.png').convert_alpha(),(75,75))
+virus2 = transform.scale(image.load('assets/virus3.png').convert_alpha(),(75,75))
+heart = transform.scale(image.load('assets/heart.png').convert_alpha(),(50,50))
+heart1 = transform.scale(image.load('assets/heart.png').convert_alpha(),(50,50))
+heart2 = transform.scale(image.load('assets/heart.png').convert_alpha(),(50,50))
+menuBackground = image.load('assets/menuBackground.jpg').convert()
+gameTitle = transform.scale(image.load('assets/Title.png').convert_alpha(),(900,50))
+scoreKeep = transform.scale(image.load('assets/score.png').convert_alpha(),(100,25))
+computer = transform.scale(image.load('assets/Computer.png').convert_alpha(),(250,150))   
+gameOverPic = image.load('assets/gameOver.jpg').convert()
+highscore = transform.scale(image.load('assets/highScore.png').convert_alpha(),(150,25))
+gameOverTXT = transform.scale(image.load('assets/gameOverTXT.png').convert_alpha(),(500,100))
+infoBG = image.load('assets/infoBackGround.jpg').convert()
+power = transform.scale(image.load('assets/power.jpg').convert_alpha(),(50,50))
+back = transform.scale(image.load('assets/back.png').convert_alpha(),(50,50))
 
 heartList = [heart,heart1,heart2]
 missileList = []        #Lists for the missiles
@@ -93,7 +93,7 @@ missileListx = []
 def drawMenu(MASTER, mx, my, button):   #Function to draw the main menu
     if MASTER == 1:
         if MASTER >= 1:
-            mixer.music.load("spaceMusic.mp3")
+            mixer.music.load("assets/spaceMusic.mp3")
             mixer.music.play(-1)        #Plays the music during main screen, game screen and info screen
             mixer.music.set_volume(0.3)                 
         screen.fill(WHITE)
@@ -162,7 +162,7 @@ def info(MASTER, mx, my, button):    #Function to draw the instructions screen
 def gameOver(MASTER, mx, my, button):       #Function that draws the game over screen
     if MASTER == 0:
         screen.fill(WHITE)
-        topScore = open('scoreKeep.txt','r')    #Allows the highscore to be shown on the game over screen
+        topScore = open('assets/scoreKeep.txt','r')    #Allows the highscore to be shown on the game over screen
         highScore = int(topScore.readline())
         topScore.close()        
         screen.blit(gameOverPic,(0,0))
@@ -217,11 +217,11 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
         if score >= 300:    #Game starts speeding up once the user gets 300 points
             levelspeed += 0.0003
         
-        topScore = open('scoreKeep.txt','r')  
+        topScore = open('assets/scoreKeep.txt','r')  
         highScore = int(topScore.readline())
         topScore.close()            
         if score > highScore:     
-            saveScore = open('scoreKeep.txt','w')   #Reading and writing to a file so I can save the high score
+            saveScore = open('assets/scoreKeep.txt','w')   #Reading and writing to a file so I can save the high score
             saveScore.write(str(score))
             saveScore.close()
             
@@ -357,7 +357,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
                 bonusLife = False
                 MASTER = 0
                 if score > highScore:
-                    saveScore = open('scoreKeep.txt','w')
+                    saveScore = open('assets/scoreKeep.txt','w')
                     saveScore.write(str(score))
                     saveScore.close()                                    
         elif healthValue[1] <= 0: #Checks it for computer 2
@@ -381,7 +381,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
                 MASTER = 0
                 virusHealth = [30,20,10] 
                 if score > highScore:
-                    saveScore = open('scoreKeep.txt','w')
+                    saveScore = open('assets/scoreKeep.txt','w')
                     saveScore.write(str(score))
                     saveScore.close()                                
         elif healthValue[2] <= 0:   #Checks for computer 3
@@ -405,7 +405,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
                 bonusLife = False
                 MASTER = 0
                 if score > highScore:
-                    saveScore = open('scoreKeep.txt','w')
+                    saveScore = open('assets/scoreKeep.txt','w')
                     saveScore.write(str(score))
                     saveScore.close()                                
             
@@ -506,7 +506,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
                 bonusLife = False
                 MASTER = 0                
                 if score > highScore:
-                    saveScore = open('scoreKeep.txt','w')
+                    saveScore = open('assets/scoreKeep.txt','w')
                     saveScore.write(str(score))
                     saveScore.close()                    
         if playerRect.colliderect(virus1Rect) == True:
@@ -537,7 +537,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
                 bonusLife = False
                 MASTER = 0
                 if score > highScore:
-                    saveScore = open('scoreKeep.txt','w')
+                    saveScore = open('assets/scoreKeep.txt','w')
                     saveScore.write(str(score))
                     saveScore.close()                    
         if playerRect.colliderect(virus2Rect) == True:
@@ -569,7 +569,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
                 bonusLife = False
                 MASTER = 0
                 if score > highScore:
-                    saveScore = open('scoreKeep.txt','w')
+                    saveScore = open('assets/scoreKeep.txt','w')
                     saveScore.write(str(score))
                     saveScore.close()                    
         if playerRect.colliderect(bonusRect) == True:   #If you have less than 3 hearts, then u can get another life
@@ -594,7 +594,7 @@ def mainGame(MASTER,mx,my,button,button1,startx,starty,backgroundy,bonusx,bonusy
             levelspeed = 0
             MASTER = 0
             if score > highScore:
-                saveScore = open('scoreKeep.txt','w')
+                saveScore = open('assets/scoreKeep.txt','w')
                 saveScore.write(str(score))
                 saveScore.close()                
         if startx > 1000 or startx < 0: #If the user goes off the screen, you lose one life
